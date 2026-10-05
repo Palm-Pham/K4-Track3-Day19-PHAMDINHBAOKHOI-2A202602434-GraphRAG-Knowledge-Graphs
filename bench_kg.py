@@ -13,6 +13,7 @@ Writes ket_qua_benchmark_kg.txt (summary table + every answer).
 from __future__ import annotations
 
 import argparse
+import time
 import json
 import os
 import time
@@ -219,6 +220,7 @@ def main() -> int:
                 row["judge"] = json.loads(verdict).get("score", 0)
             rows.append(row)
             print(f"{q['id']} {name:5} recall={row['recall']:.2f} {usage.seconds:.2f}s ${usage.usd:.5f}")
+            time.sleep(4)
     stats = graph.stats()
     graph.close()
 
